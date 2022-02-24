@@ -15,15 +15,12 @@ public class JacksonTest {
     @Test
     public void jsonStr2JavaBeanTest() throws JsonProcessingException {
 
-//        String jsonStr = "//  {\"flag\":false,\"data\":{\"name\":\"Bree\",\"age\":40,\"address\":null,\"createDate\":\"2022-02-24 20:30:13\"},\"errorMessage\":\"Success\"}\n";
         String jsonStr = "{\"name\":\"Bree\",\"age\":40,\"address\":null,\"createDate\":\"2022-02-24 20:40:41\"}";
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
         UserInfo userInfo = objectMapper.readValue(jsonStr, UserInfo.class);
         System.out.println(userInfo);
 //        UserInfo(name=Bree, age=40, address=null, createDate=2022-02-24T20:40:41)
-//
-
     }
 
     /**
@@ -79,5 +76,5 @@ public class JacksonTest {
 //        responseBean.data= UserInfo(name=Bree, age=40, address=null, createDate=2022-02-24T20:30:13)
 //        responseBean.flag= false
 //        responseBean.errMessage= Success
-    }   
+    }
 }
