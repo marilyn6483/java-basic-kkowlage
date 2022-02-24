@@ -64,4 +64,20 @@ public class JacksonTest {
 
 
     }
+
+    @Test
+    public void jsonStr2ResponseBean() throws JsonProcessingException {
+        String jsonStr = "{\"flag\":false,\"data\":{\"name\":\"Bree\",\"age\":40,\"address\":null,\"createDate\":\"2022-02-24 20:30:13\"},\"errorMessage\":\"Success\"}";
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.findAndRegisterModules();
+        ResponseBean<UserInfo> responseBean = objectMapper.readValue(jsonStr, new TypeReference<ResponseBean<UserInfo>>() {
+        });
+        System.out.println("responseBean.data= " + responseBean.getData());
+        System.out.println("responseBean.flag= " + responseBean.getFlag());
+        System.out.println("responseBean.errMessage= " + responseBean.getErrorMessage());
+
+//        responseBean.data= UserInfo(name=Bree, age=40, address=null, createDate=2022-02-24T20:30:13)
+//        responseBean.flag= false
+//        responseBean.errMessage= Success
+    }   
 }
